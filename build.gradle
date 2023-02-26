@@ -13,9 +13,20 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-mustache'
+    // Spring
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-mustache'
     implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    // JSR305
+    implementation 'com.google.code.findbugs:jsr305:3.0.2'
+
+    // MySQL
+    implementation 'mysql:mysql-connector-java:8.0.32'
+
+    // ByteBuddy
+    implementation 'net.bytebuddy:byte-buddy-dep:1.14.0'
 
     // Lombok
     compileOnly 'org.projectlombok:lombok:1.18.24'

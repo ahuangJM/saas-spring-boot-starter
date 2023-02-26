@@ -6,7 +6,7 @@ How to use
 =============================
 1. clone this repository
 2. open terminal and run `npm run-script start `
-3. open another terminal and run `./gradlew run`
+3. open another terminal and run `./gradlew run --args='--spring.profiles.active=local'`
 
 Stack
 =============================

@@ -1,1 +1,12 @@
 http.monitor.port: 8080
+
+spring:
+  jpa:
+    database: mysql
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:mysql://0.0.0.0:3306/saas-spring-boot-starter
+    username: root
+    password:
+    driver-class-name: com.mysql.cj.jdbc.Driver
