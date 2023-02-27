@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class HttpSecurityAuthorizeHttpRequestsConfigurer {
-    public void configure(AuthorizeHttpRequestsConfigurer<HttpSecurity>.AuthorizationManagerRequestMatcherRegistry requests) {
+    public void configure(final AuthorizeHttpRequestsConfigurer<HttpSecurity>.AuthorizationManagerRequestMatcherRegistry requests) {
         requests.anyRequest().authenticated();
     }
 }

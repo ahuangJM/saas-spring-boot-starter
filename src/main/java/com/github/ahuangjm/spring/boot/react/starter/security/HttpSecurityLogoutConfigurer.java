@@ -6,7 +6,19 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class HttpSecurityLogoutConfigurer {
-    public void configure(LogoutConfigurer<HttpSecurity> logout) {
-        logout.permitAll();
+    private final LogoutSuccessHandler logoutSuccessHandler;
+
+    public HttpSecurityLogoutConfigurer(final LogoutSuccessHandler logoutSuccessHandler) {
+        this.logoutSuccessHandler = logoutSuccessHandler;
+    }
+
+    public void configure(final LogoutConfigurer<HttpSecurity> logout) {
+        logout
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/login")
+                .invalidateHttpSession(true)
+                .deleteCookies("JSESSIONID")
+                .logoutSuccessHandler(this.logoutSuccessHandler)
+                .permitAll();
     }
 }

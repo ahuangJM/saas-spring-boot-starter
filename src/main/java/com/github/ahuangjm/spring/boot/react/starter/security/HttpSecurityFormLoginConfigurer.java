@@ -6,10 +6,17 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class HttpSecurityFormLoginConfigurer {
+    private final LoginSuccessHandler loginSuccessHandler;
+
+    public HttpSecurityFormLoginConfigurer(final LoginSuccessHandler loginSuccessHandler) {
+        this.loginSuccessHandler = loginSuccessHandler;
+    }
+
     public void configure(final FormLoginConfigurer<HttpSecurity> form) {
         form
                 .loginProcessingUrl("/login")
                 .loginPage("/login")
+                .successHandler(this.loginSuccessHandler)
                 .permitAll();
     }
 }

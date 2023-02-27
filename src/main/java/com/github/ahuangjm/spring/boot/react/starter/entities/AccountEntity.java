@@ -24,6 +24,10 @@ public class AccountEntity {
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private UserEntity user;
 
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "organization_id", referencedColumnName = "id")
+    private OrganizationEntity organization;
+
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "account_authority_id", referencedColumnName = "id")
     private List<AccountAuthorityEntity> authorities;

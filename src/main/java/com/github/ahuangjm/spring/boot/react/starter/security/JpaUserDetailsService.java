@@ -2,11 +2,11 @@ package com.github.ahuangjm.spring.boot.react.starter.security;
 
 import com.github.ahuangjm.spring.boot.react.starter.entities.AccountAuthorityEntity;
 import com.github.ahuangjm.spring.boot.react.starter.entities.AccountEntity;
+import com.github.ahuangjm.spring.boot.react.starter.models.Account;
 import com.github.ahuangjm.spring.boot.react.starter.repositories.AccountEntityRepository;
 import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -41,12 +41,13 @@ public class JpaUserDetailsService implements UserDetailsService {
         final String role = accountEntity.getRole().name();
         final boolean disabled = !accountEntity.isEnabled();
 
-        return User.builder()
+        final UserDetails userdetails = Account.builder()
                 .username(username)
                 .password(password)
                 .authorities(authorities)
                 .roles(role)
                 .disabled(disabled)
                 .build();
+        return new Account(accountEntity.getId(), accountEntity.getOrganization(), userdetails);
     }
 }
